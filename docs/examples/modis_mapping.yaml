@@ -1,0 +1,8 @@
+# Mapping from Earth Engine band columns to contract variables.
+# Used by: uv run fieldshift convert-gee <export> <this file> <output>
+unit_id_column: unit_id
+date_column: date
+bands:
+  NDVI: {variable: ndvi, scale: 0.0001, source: MOD13Q1.061, res_m: 250}
+  EVI:  {variable: evi,  scale: 0.0001, source: MOD13Q1.061, res_m: 250}
+ignore_columns: ["system:index", ".geo"]

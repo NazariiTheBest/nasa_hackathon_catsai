@@ -1,0 +1,82 @@
+{
+  "contract_version": "1.0",
+  "bundle_id": "ua-sample-fields",
+  "unit_type": "field",
+  "created_at": "2026-11-14T00:00:00Z",
+  "author": "fieldshift sample generator",
+  "sources": [
+    {
+      "variable": "ndvi",
+      "product": "MOD13Q1",
+      "version": "061",
+      "native_res_m": 250,
+      "date_start": "2001-01-01",
+      "date_end": "2025-12-31"
+    },
+    {
+      "variable": "evi",
+      "product": "MOD13Q1",
+      "version": "061",
+      "native_res_m": 250,
+      "date_start": "2001-01-01",
+      "date_end": "2025-12-31"
+    },
+    {
+      "variable": "et",
+      "product": "MOD16A2GF",
+      "version": "061",
+      "native_res_m": 500,
+      "date_start": "2001-01-01",
+      "date_end": "2025-12-31"
+    },
+    {
+      "variable": "precip",
+      "product": "GPM IMERG monthly",
+      "version": "V07",
+      "native_res_m": 11000,
+      "date_start": "2001-01-01",
+      "date_end": "2025-12-31"
+    },
+    {
+      "variable": "sm_surface",
+      "product": "SMAP SPL4SMGP",
+      "version": "007",
+      "native_res_m": 9000,
+      "date_start": "2015-04-01",
+      "date_end": "2025-12-31"
+    },
+    {
+      "variable": "sm_rootzone",
+      "product": "SMAP SPL4SMGP",
+      "version": "007",
+      "native_res_m": 9000,
+      "date_start": "2015-04-01",
+      "date_end": "2025-12-31"
+    },
+    {
+      "variable": "soil",
+      "product": "SoilGrids",
+      "version": "2.0",
+      "native_res_m": 250,
+      "date_start": null,
+      "date_end": null
+    },
+    {
+      "variable": "terrain",
+      "product": "SRTMGL1",
+      "version": "003",
+      "native_res_m": 30,
+      "date_start": null,
+      "date_end": null
+    },
+    {
+      "variable": "suitability",
+      "product": "FAO GAEZ",
+      "version": "v4",
+      "native_res_m": 9000,
+      "date_start": null,
+      "date_end": null
+    }
+  ],
+  "notes": "SYNTHETIC data for development and tests. Not real observations."
+}

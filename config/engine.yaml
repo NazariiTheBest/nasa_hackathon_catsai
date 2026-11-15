@@ -1,0 +1,54 @@
+# Non-crop engine thresholds. Tunable without code changes; restart the backend
+# after editing. Unknown keys are rejected at start-up. See docs/knowledge-base.md.
+
+# --- Site diagnostics ---
+bare_ndvi_threshold: 0.30          # multi-year median NDVI below this counts as low cover
+hot_day_tmax_c: 30.0               # a "hot day" for the hot-day trend indicator
+erosive_rain_mm: 10.0              # daily rainfall at or above this is erosive
+erosive_rain_ref_mm: 300.0         # erosive rain in one bare window that maps to index 1.0
+neutral_terrain_factor: 0.7        # used when slope and erodibility are unknown
+default_awc_mm_per_m: 140          # assumed water-holding capacity when no soil data exists
+short_record_years: 15             # series shorter than this are anomalies, never trends
+drought_run_days: 10               # consecutive severe-stress days that count as a drought event
+drought_stress_ks: 0.5             # severe stress: the crop can take up less than this share of its demand
+heat_event_min_days: 3             # days above the crop heat threshold that count as a heat event
+
+# --- Water balance ---
+bare_soil_kc: 0.20                 # evaporation coefficient of bare soil
+bare_soil_depth_m: 0.4             # soil depth that dries out under bare soil
+dormancy_kc: 0.4                   # winter crop coefficient while dormant
+
+# --- Rotation calendar ---
+turnaround_days: 7                 # harvest to next sowing
+min_bare_window_days: 60           # shortest bare window a cover crop is inserted into
+min_cover_growth_days: 45          # a cover crop must grow at least this long
+cover_termination_lead_days: 14    # cover crop terminated this long before the next sowing
+baseline_clamp_tolerance_days: 45  # how late the declared baseline may sow before a year is skipped
+
+# --- Constraints ---
+heat_units_min_share: 0.8          # share of years that must provide a crop's heat units
+suitability_floor: 25              # GAEZ-style index (0-100) below which a crop is not introduced
+family_min_return_years:
+  default: 2
+  poaceae: 1                       # cereal after cereal is accepted practice
+
+# --- Scoring ---
+max_candidates: 100
+alternatives_returned: 3
+n_fixation_cap_kg_ha: 100          # nitrogen credit per year that maps to score 1.0
+cover_cost_income: 0.03            # income index cost of one cover crop
+confidence_interval_width: 0.15    # P10-P90 width above which confidence drops one level
+weights:
+  priorities_share: 0.8            # share of the overall score driven by farmer priorities
+  resilience_share: 0.1
+  pest_break_share: 0.1
+yield_loss:                        # relative yield loss per unit of stress, used by income
+  water: 1.0
+  heat: 0.15
+  frost: 0.20
+  winterkill: 0.40
+stress_weights:                    # severity of each hazard in the resilience objective
+  heat: 0.5
+  frost: 0.5
+  winterkill: 0.7
+  drought: 0.6

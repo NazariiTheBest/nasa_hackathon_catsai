@@ -1,0 +1,52 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "cover_frac": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Cover Frac",
+      "type": "number"
+    },
+    "crop_id": {
+      "minLength": 1,
+      "title": "Crop Id",
+      "type": "string"
+    },
+    "method": {
+      "enum": [
+        "declared",
+        "worldcereal",
+        "ndvi_phenology"
+      ],
+      "title": "Method",
+      "type": "string"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "year": {
+      "maximum": 2100,
+      "minimum": 1980,
+      "title": "Year",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "unit_id",
+    "year",
+    "crop_id",
+    "cover_frac",
+    "method",
+    "confidence"
+  ],
+  "title": "CropHistoryRow",
+  "type": "object"
+}

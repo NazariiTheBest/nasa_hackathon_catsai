@@ -1,0 +1,548 @@
+# Field Shift crop knowledge base.
+#
+# Every agronomic judgment the tool makes reads from this file. Values marked
+# `review_status: draft` were compiled from published tables and have NOT yet
+# been checked by an agronomist; any strategy that uses a draft crop tells the
+# farmer so. See docs/knowledge-base.md for the meaning and unit of each trait.
+#
+# Source keys used below:
+#   FAO-56    Allen et al. 1998, "Crop evapotranspiration", FAO Irrigation and
+#             Drainage Paper 56: Table 11 (stage lengths), Table 12 (crop
+#             coefficients), Table 22 (rooting depth, depletion fraction).
+#   ECOCROP   FAO ECOCROP database (temperature limits, growth cycle).
+#   SARE      "Managing Cover Crops Profitably", 3rd ed., SARE 2007.
+#   UA-164    Cabinet of Ministers of Ukraine resolution No. 164 of 11.02.2010
+#             on crop-rotation norms (return intervals). To be confirmed.
+#   DRAFT     Team estimate for Ukrainian conditions, awaiting review.
+
+# ----------------------------- Winter cash crops -----------------------------
+
+- id: winter_wheat
+  name: {en: Winter wheat, uk: Пшениця озима}
+  family: poaceae
+  role: cash
+  season: winter
+  sowing_window_doy: [250, 288]        # 7 Sep - 15 Oct
+  default_sow_doy: 268
+  t_base_c: 0
+  gdd_to_maturity: 1900
+  stages_days: [160, 50, 55, 25]       # initial (incl. winter), development, mid, late
+  kc: {ini: 0.4, mid: 1.15, end: 0.3}
+  root_depth_m: 1.5
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 32}
+    frost: {stage: dev, tmin_c: -8}
+    winterkill: {stage: ini, tmin_c: -20}
+  drought_tolerance: 0.5
+  n_fixation_kg_ha: 0
+  residue_cover: 0.7
+  forage_value: 0.1
+  market_value: 0.75
+  min_return_years: 2
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "UA-164", "DRAFT"]
+  review_status: draft
+
+- id: winter_barley
+  name: {en: Winter barley, uk: Ячмінь озимий}
+  family: poaceae
+  role: cash
+  season: winter
+  sowing_window_doy: [255, 283]
+  default_sow_doy: 265
+  t_base_c: 0
+  gdd_to_maturity: 1750
+  stages_days: [155, 50, 50, 20]
+  kc: {ini: 0.3, mid: 1.15, end: 0.25}
+  root_depth_m: 1.2
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 32}
+    frost: {stage: dev, tmin_c: -7}
+    winterkill: {stage: ini, tmin_c: -15}
+  drought_tolerance: 0.55
+  n_fixation_kg_ha: 0
+  residue_cover: 0.65
+  forage_value: 0.25
+  market_value: 0.6
+  min_return_years: 2
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+
+- id: winter_rapeseed
+  name: {en: Winter rapeseed, uk: Ріпак озимий}
+  family: brassicaceae
+  role: cash
+  season: winter
+  sowing_window_doy: [222, 248]        # 10 Aug - 5 Sep
+  default_sow_doy: 235
+  t_base_c: 0
+  gdd_to_maturity: 2000
+  stages_days: [190, 50, 50, 25]
+  kc: {ini: 0.35, mid: 1.1, end: 0.35}
+  root_depth_m: 1.2
+  depletion_fraction: 0.6
+  stress:
+    heat: {stage: mid, tmax_c: 30}
+    frost: {stage: mid, tmin_c: -3}
+    winterkill: {stage: ini, tmin_c: -17}
+  drought_tolerance: 0.4
+  n_fixation_kg_ha: 0
+  residue_cover: 0.5
+  forage_value: 0.15
+  market_value: 0.9
+  min_return_years: 4
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "UA-164", "DRAFT"]
+  review_status: draft
+
+# ----------------------------- Spring cash crops -----------------------------
+
+- id: spring_barley
+  name: {en: Spring barley, uk: Ячмінь ярий}
+  family: poaceae
+  role: cash
+  season: spring
+  sowing_window_doy: [75, 110]         # 16 Mar - 20 Apr
+  default_sow_doy: 90
+  t_base_c: 0
+  gdd_to_maturity: 1500
+  stages_days: [20, 25, 50, 25]
+  kc: {ini: 0.3, mid: 1.15, end: 0.25}
+  root_depth_m: 1.1
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 30}
+    frost: {stage: ini, tmin_c: -6}
+  drought_tolerance: 0.45
+  n_fixation_kg_ha: 0
+  residue_cover: 0.6
+  forage_value: 0.25
+  market_value: 0.55
+  min_return_years: 2
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+
+- id: maize
+  name: {en: Maize (grain), uk: Кукурудза на зерно}
+  family: poaceae
+  role: cash
+  season: spring
+  sowing_window_doy: [110, 135]        # 20 Apr - 15 May
+  default_sow_doy: 120
+  t_base_c: 10
+  gdd_to_maturity: 1100                # early to mid-early hybrids
+  stages_days: [30, 40, 50, 30]
+  kc: {ini: 0.3, mid: 1.2, end: 0.35}
+  root_depth_m: 1.5
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 35}
+    frost: {stage: ini, tmin_c: -2}
+  drought_tolerance: 0.4
+  n_fixation_kg_ha: 0
+  residue_cover: 0.8
+  forage_value: 0.6
+  market_value: 0.85
+  min_return_years: 1
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+
+- id: sunflower
+  name: {en: Sunflower, uk: Соняшник}
+  family: asteraceae
+  role: cash
+  season: spring
+  sowing_window_doy: [100, 135]        # 10 Apr - 15 May
+  default_sow_doy: 115
+  t_base_c: 6
+  gdd_to_maturity: 1350
+  stages_days: [25, 35, 45, 25]
+  kc: {ini: 0.35, mid: 1.05, end: 0.35}
+  root_depth_m: 1.5
+  depletion_fraction: 0.45
+  stress:
+    heat: {stage: mid, tmax_c: 35}
+    frost: {stage: ini, tmin_c: -4}
+  drought_tolerance: 0.7
+  n_fixation_kg_ha: 0
+  residue_cover: 0.3
+  forage_value: 0.1
+  market_value: 0.9
+  min_return_years: 7                  # UA-164: not more often than once in 7 years
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "UA-164", "DRAFT"]
+  review_status: draft
+
+- id: soybean
+  name: {en: Soybean, uk: Соя}
+  family: fabaceae
+  role: cash
+  season: spring
+  sowing_window_doy: [115, 140]        # 25 Apr - 20 May
+  default_sow_doy: 125
+  t_base_c: 10
+  gdd_to_maturity: 1000
+  stages_days: [20, 35, 60, 25]
+  kc: {ini: 0.4, mid: 1.15, end: 0.5}
+  root_depth_m: 1.0
+  depletion_fraction: 0.5
+  stress:
+    heat: {stage: mid, tmax_c: 34}
+    frost: {stage: ini, tmin_c: -2}
+  drought_tolerance: 0.35
+  n_fixation_kg_ha: 60                 # net credit left for the following crop
+  residue_cover: 0.35
+  forage_value: 0.3
+  market_value: 0.85
+  min_return_years: 3
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "UA-164", "DRAFT"]
+  review_status: draft
+
+- id: sugar_beet
+  name: {en: Sugar beet, uk: Буряк цукровий}
+  family: amaranthaceae
+  role: cash
+  season: spring
+  sowing_window_doy: [85, 115]
+  default_sow_doy: 100
+  t_base_c: 3
+  gdd_to_maturity: 2200
+  stages_days: [35, 60, 60, 25]
+  kc: {ini: 0.35, mid: 1.2, end: 0.7}
+  root_depth_m: 1.0
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 33}
+    frost: {stage: ini, tmin_c: -3}
+  drought_tolerance: 0.3
+  n_fixation_kg_ha: 0
+  residue_cover: 0.3
+  forage_value: 0.4
+  market_value: 0.8
+  min_return_years: 4
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "UA-164", "DRAFT"]
+  review_status: draft
+
+- id: buckwheat
+  name: {en: Buckwheat, uk: Гречка}
+  family: polygonaceae
+  role: cash
+  season: spring
+  sowing_window_doy: [130, 165]        # 10 May - 14 Jun
+  default_sow_doy: 140
+  t_base_c: 8
+  gdd_to_maturity: 800
+  stages_days: [15, 25, 30, 20]
+  kc: {ini: 0.4, mid: 1.0, end: 0.5}
+  root_depth_m: 0.8
+  depletion_fraction: 0.5
+  stress:
+    heat: {stage: mid, tmax_c: 30}
+    frost: {stage: ini, tmin_c: -1}
+  drought_tolerance: 0.4
+  n_fixation_kg_ha: 0
+  residue_cover: 0.3
+  forage_value: 0.1
+  market_value: 0.6
+  min_return_years: 2
+  irrigation_required: false
+  sources: ["ECOCROP", "DRAFT"]
+  review_status: draft
+
+# ---------------------- Drought-tolerant alternative crops -------------------
+
+- id: sorghum
+  name: {en: Grain sorghum, uk: Сорго зернове}
+  family: poaceae
+  role: cash
+  season: spring
+  drought_alternative: true
+  sowing_window_doy: [125, 150]        # 5 May - 30 May
+  default_sow_doy: 135
+  t_base_c: 10
+  gdd_to_maturity: 1000
+  stages_days: [20, 35, 40, 30]
+  kc: {ini: 0.3, mid: 1.05, end: 0.55}
+  root_depth_m: 1.5
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 38}
+    frost: {stage: ini, tmin_c: -1}
+  drought_tolerance: 0.9
+  n_fixation_kg_ha: 0
+  residue_cover: 0.75
+  forage_value: 0.6
+  market_value: 0.6
+  min_return_years: 2
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+
+- id: millet
+  name: {en: Proso millet, uk: Просо}
+  family: poaceae
+  role: cash
+  season: spring
+  drought_alternative: true
+  sowing_window_doy: [125, 155]
+  default_sow_doy: 135
+  t_base_c: 10
+  gdd_to_maturity: 850
+  stages_days: [15, 25, 40, 25]
+  kc: {ini: 0.3, mid: 1.0, end: 0.3}
+  root_depth_m: 1.2
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 38}
+    frost: {stage: ini, tmin_c: -1}
+  drought_tolerance: 0.85
+  n_fixation_kg_ha: 0
+  residue_cover: 0.5
+  forage_value: 0.4
+  market_value: 0.5
+  min_return_years: 2
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+
+- id: chickpea
+  name: {en: Chickpea, uk: Нут}
+  family: fabaceae
+  role: cash
+  season: spring
+  drought_alternative: true
+  sowing_window_doy: [85, 115]
+  default_sow_doy: 100
+  t_base_c: 5
+  gdd_to_maturity: 1200
+  stages_days: [25, 30, 35, 25]
+  kc: {ini: 0.4, mid: 1.0, end: 0.35}
+  root_depth_m: 0.9
+  depletion_fraction: 0.5
+  stress:
+    heat: {stage: mid, tmax_c: 35}
+    frost: {stage: ini, tmin_c: -6}
+  drought_tolerance: 0.8
+  n_fixation_kg_ha: 50
+  residue_cover: 0.3
+  forage_value: 0.15
+  market_value: 0.75
+  min_return_years: 4
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+
+# ------------------------------ Legumes and forage ---------------------------
+
+- id: peas
+  name: {en: Field peas, uk: Горох}
+  family: fabaceae
+  role: cash
+  season: spring
+  sowing_window_doy: [70, 100]         # 11 Mar - 10 Apr
+  default_sow_doy: 85
+  t_base_c: 4
+  gdd_to_maturity: 900
+  stages_days: [20, 30, 35, 15]
+  kc: {ini: 0.5, mid: 1.15, end: 0.3}
+  root_depth_m: 0.8
+  depletion_fraction: 0.4
+  stress:
+    heat: {stage: mid, tmax_c: 28}
+    frost: {stage: ini, tmin_c: -6}
+  drought_tolerance: 0.4
+  n_fixation_kg_ha: 60
+  residue_cover: 0.4
+  forage_value: 0.4
+  market_value: 0.65
+  min_return_years: 4
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "UA-164", "DRAFT"]
+  review_status: draft
+
+- id: alfalfa
+  name: {en: Alfalfa, uk: Люцерна}
+  family: fabaceae
+  role: forage
+  season: spring
+  sowing_window_doy: [90, 125]
+  default_sow_doy: 100
+  t_base_c: 5
+  gdd_to_maturity: 900
+  stages_days: [20, 30, 110, 20]
+  kc: {ini: 0.4, mid: 0.95, end: 0.9}
+  root_depth_m: 1.5
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 38}
+    frost: {stage: ini, tmin_c: -4}
+  drought_tolerance: 0.7
+  n_fixation_kg_ha: 150
+  residue_cover: 0.9
+  forage_value: 1.0
+  market_value: 0.5
+  min_return_years: 4
+  irrigation_required: false
+  sources: ["FAO-56 Tables 11, 12, 22", "ECOCROP", "DRAFT"]
+  review_status: draft
+  notes: Perennial in practice. Modeled here as one stand year per rotation slot.
+
+- id: sainfoin
+  name: {en: Sainfoin, uk: Еспарцет}
+  family: fabaceae
+  role: forage
+  season: spring
+  sowing_window_doy: [85, 120]
+  default_sow_doy: 95
+  t_base_c: 4
+  gdd_to_maturity: 900
+  stages_days: [20, 30, 100, 20]
+  kc: {ini: 0.4, mid: 0.9, end: 0.85}
+  root_depth_m: 1.5
+  depletion_fraction: 0.55
+  stress:
+    heat: {stage: mid, tmax_c: 36}
+    frost: {stage: ini, tmin_c: -5}
+  drought_tolerance: 0.85
+  n_fixation_kg_ha: 120
+  residue_cover: 0.85
+  forage_value: 0.9
+  market_value: 0.4
+  min_return_years: 4
+  irrigation_required: false
+  sources: ["ECOCROP", "DRAFT"]
+  review_status: draft
+  notes: Perennial in practice. Modeled here as one stand year per rotation slot.
+
+# --------------------------------- Cover crops -------------------------------
+# For cover crops stages_days sums to the longest useful growth period; the
+# engine terminates a cover crop before the next main crop is sown.
+
+- id: winter_rye
+  name: {en: Winter rye (cover), uk: Жито озиме (сидерат)}
+  family: poaceae
+  role: cover
+  season: winter
+  sowing_window_doy: [244, 293]        # 1 Sep - 20 Oct
+  default_sow_doy: 258
+  t_base_c: 0
+  gdd_to_maturity: 300
+  stages_days: [150, 40, 30, 10]
+  kc: {ini: 0.3, mid: 0.9, end: 0.9}
+  root_depth_m: 1.0
+  depletion_fraction: 0.6
+  stress:
+    winterkill: {stage: ini, tmin_c: -28}
+  drought_tolerance: 0.6
+  n_fixation_kg_ha: 0
+  residue_cover: 0.6
+  forage_value: 0.4
+  market_value: 0.0
+  min_return_years: 1
+  irrigation_required: false
+  sources: ["SARE", "FAO-56 Table 12", "DRAFT"]
+  review_status: draft
+
+- id: hairy_vetch
+  name: {en: Hairy vetch (cover), uk: Вика озима (сидерат)}
+  family: fabaceae
+  role: cover
+  season: winter
+  sowing_window_doy: [232, 274]        # 20 Aug - 1 Oct
+  default_sow_doy: 250
+  t_base_c: 2
+  gdd_to_maturity: 300
+  stages_days: [150, 40, 35, 10]
+  kc: {ini: 0.35, mid: 1.0, end: 1.0}
+  root_depth_m: 0.8
+  depletion_fraction: 0.5
+  stress:
+    winterkill: {stage: ini, tmin_c: -20}
+  drought_tolerance: 0.5
+  n_fixation_kg_ha: 90                 # at full growth; scaled by the share achieved
+  residue_cover: 0.55
+  forage_value: 0.5
+  market_value: 0.0
+  min_return_years: 1
+  irrigation_required: false
+  sources: ["SARE", "DRAFT"]
+  review_status: draft
+
+- id: white_mustard
+  name: {en: White mustard (cover), uk: Гірчиця біла (сидерат)}
+  family: brassicaceae
+  role: cover
+  season: spring
+  sowing_window_doy: [196, 258]        # 15 Jul - 15 Sep, after cereal harvest
+  default_sow_doy: 215
+  t_base_c: 3
+  gdd_to_maturity: 400
+  stages_days: [10, 20, 25, 15]
+  kc: {ini: 0.35, mid: 1.0, end: 0.9}
+  root_depth_m: 0.8
+  depletion_fraction: 0.5
+  stress: {}
+  drought_tolerance: 0.4
+  n_fixation_kg_ha: 0
+  residue_cover: 0.4
+  forage_value: 0.2
+  market_value: 0.0
+  min_return_years: 1
+  irrigation_required: false
+  sources: ["SARE", "DRAFT"]
+  review_status: draft
+
+- id: oilseed_radish
+  name: {en: Oilseed radish (cover), uk: Редька олійна (сидерат)}
+  family: brassicaceae
+  role: cover
+  season: spring
+  sowing_window_doy: [196, 250]
+  default_sow_doy: 215
+  t_base_c: 3
+  gdd_to_maturity: 450
+  stages_days: [10, 20, 30, 15]
+  kc: {ini: 0.35, mid: 1.0, end: 0.9}
+  root_depth_m: 1.2
+  depletion_fraction: 0.5
+  stress: {}
+  drought_tolerance: 0.5
+  n_fixation_kg_ha: 0
+  residue_cover: 0.45
+  forage_value: 0.3
+  market_value: 0.0
+  min_return_years: 1
+  irrigation_required: false
+  sources: ["SARE", "DRAFT"]
+  review_status: draft
+
+- id: phacelia
+  name: {en: Phacelia (cover), uk: Фацелія (сидерат)}
+  family: boraginaceae
+  role: cover
+  season: spring
+  sowing_window_doy: [196, 250]
+  default_sow_doy: 213
+  t_base_c: 3
+  gdd_to_maturity: 400
+  stages_days: [10, 20, 25, 10]
+  kc: {ini: 0.3, mid: 0.95, end: 0.85}
+  root_depth_m: 0.7
+  depletion_fraction: 0.5
+  stress: {}
+  drought_tolerance: 0.55
+  n_fixation_kg_ha: 0
+  residue_cover: 0.35
+  forage_value: 0.1
+  market_value: 0.0
+  min_return_years: 1
+  irrigation_required: false
+  sources: ["SARE", "DRAFT"]
+  review_status: draft

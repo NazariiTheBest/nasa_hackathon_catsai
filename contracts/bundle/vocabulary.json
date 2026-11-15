@@ -1,0 +1,61 @@
+{
+  "contract_version": "1.0",
+  "sentinels_rejected": [
+    -9999.0,
+    -3000.0,
+    -999.0,
+    32767.0,
+    -32768.0,
+    65535.0
+  ],
+  "variables": {
+    "et": {
+      "expected_source": "MODIS MOD16A2GF",
+      "hi": 20.0,
+      "lo": 0.0,
+      "unit": "mm/day"
+    },
+    "evi": {
+      "expected_source": "MODIS MOD13Q1",
+      "hi": 1.0,
+      "lo": -1.0,
+      "unit": "unitless"
+    },
+    "lst_day": {
+      "expected_source": "MODIS MOD11 / ECOSTRESS",
+      "hi": 80.0,
+      "lo": -60.0,
+      "unit": "degC"
+    },
+    "ndvi": {
+      "expected_source": "MODIS MOD13Q1",
+      "hi": 1.0,
+      "lo": -1.0,
+      "unit": "unitless"
+    },
+    "precip": {
+      "expected_source": "GPM IMERG",
+      "hi": 500.0,
+      "lo": 0.0,
+      "unit": "mm/day"
+    },
+    "sm_rootzone": {
+      "expected_source": "SMAP L4",
+      "hi": 1.0,
+      "lo": 0.0,
+      "unit": "m3/m3"
+    },
+    "sm_surface": {
+      "expected_source": "SMAP L4",
+      "hi": 1.0,
+      "lo": 0.0,
+      "unit": "m3/m3"
+    },
+    "t2m_mean": {
+      "expected_source": "ERA5-Land",
+      "hi": 60.0,
+      "lo": -60.0,
+      "unit": "degC"
+    }
+  }
+}

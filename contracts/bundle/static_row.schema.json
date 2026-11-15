@@ -1,0 +1,97 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "awc_mm_per_m": {
+      "anyOf": [
+        {
+          "maximum": 400,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Awc Mm Per M"
+    },
+    "clay_pct": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Clay Pct",
+      "type": "number"
+    },
+    "drainage_class": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Drainage Class"
+    },
+    "elevation_m": {
+      "maximum": 9000,
+      "minimum": -500,
+      "title": "Elevation M",
+      "type": "number"
+    },
+    "k_factor": {
+      "anyOf": [
+        {
+          "maximum": 0.2,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "K Factor"
+    },
+    "ph": {
+      "maximum": 11,
+      "minimum": 2,
+      "title": "Ph",
+      "type": "number"
+    },
+    "sand_pct": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Sand Pct",
+      "type": "number"
+    },
+    "slope_pct": {
+      "maximum": 500,
+      "minimum": 0,
+      "title": "Slope Pct",
+      "type": "number"
+    },
+    "soc_pct": {
+      "maximum": 60,
+      "minimum": 0,
+      "title": "Soc Pct",
+      "type": "number"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "clay_pct",
+    "sand_pct",
+    "soc_pct",
+    "ph",
+    "slope_pct",
+    "elevation_m"
+  ],
+  "title": "StaticRow",
+  "type": "object"
+}

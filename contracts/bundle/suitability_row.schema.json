@@ -1,0 +1,49 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "crop_id": {
+      "minLength": 1,
+      "title": "Crop Id",
+      "type": "string"
+    },
+    "scenario": {
+      "minLength": 1,
+      "title": "Scenario",
+      "type": "string"
+    },
+    "source": {
+      "minLength": 1,
+      "title": "Source",
+      "type": "string"
+    },
+    "suitability_index": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Suitability Index",
+      "type": "number"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "water_supply": {
+      "enum": [
+        "rainfed",
+        "irrigated"
+      ],
+      "title": "Water Supply",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "crop_id",
+    "suitability_index",
+    "scenario",
+    "water_supply",
+    "source"
+  ],
+  "title": "SuitabilityRow",
+  "type": "object"
+}

@@ -1,0 +1,112 @@
+{
+  "$defs": {
+    "SourceEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "date_end": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date End"
+        },
+        "date_start": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Start"
+        },
+        "native_res_m": {
+          "exclusiveMinimum": 0,
+          "title": "Native Res M",
+          "type": "number"
+        },
+        "product": {
+          "title": "Product",
+          "type": "string"
+        },
+        "variable": {
+          "title": "Variable",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable",
+        "product",
+        "version",
+        "native_res_m"
+      ],
+      "title": "SourceEntry",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "author": {
+      "minLength": 1,
+      "title": "Author",
+      "type": "string"
+    },
+    "bundle_id": {
+      "minLength": 1,
+      "title": "Bundle Id",
+      "type": "string"
+    },
+    "contract_version": {
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "notes": {
+      "default": "",
+      "title": "Notes",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceEntry"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "unit_type": {
+      "enum": [
+        "field",
+        "grid_cell"
+      ],
+      "title": "Unit Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "contract_version",
+    "bundle_id",
+    "unit_type",
+    "created_at",
+    "author",
+    "sources"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

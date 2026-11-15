@@ -1,0 +1,16 @@
+unit_id,year,crop_id,cover_frac,method,confidence
+f_demo_01,2021,sunflower,1.0,declared,1.0
+f_demo_01,2022,winter_wheat,1.0,declared,1.0
+f_demo_01,2023,sunflower,1.0,declared,1.0
+f_demo_01,2024,winter_wheat,1.0,declared,1.0
+f_demo_01,2025,sunflower,1.0,declared,1.0
+f_demo_02,2021,sunflower,1.0,declared,1.0
+f_demo_02,2022,winter_wheat,1.0,declared,1.0
+f_demo_02,2023,sunflower,1.0,declared,1.0
+f_demo_02,2024,winter_wheat,1.0,declared,1.0
+f_demo_02,2025,sunflower,1.0,declared,1.0
+f_demo_03,2021,sunflower,1.0,declared,1.0
+f_demo_03,2022,winter_wheat,1.0,declared,1.0
+f_demo_03,2023,sunflower,1.0,declared,1.0
+f_demo_03,2024,winter_wheat,1.0,declared,1.0
+f_demo_03,2025,sunflower,1.0,declared,1.0

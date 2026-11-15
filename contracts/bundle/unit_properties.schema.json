@@ -1,0 +1,64 @@
+{
+  "additionalProperties": true,
+  "description": "Properties of one feature in units.geojson. Extra properties are allowed.",
+  "properties": {
+    "area_ha": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Area Ha"
+    },
+    "cropland_frac": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Cropland Frac"
+    },
+    "name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Name"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "unit_type": {
+      "enum": [
+        "field",
+        "grid_cell"
+      ],
+      "title": "Unit Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "unit_type"
+  ],
+  "title": "UnitProperties",
+  "type": "object"
+}

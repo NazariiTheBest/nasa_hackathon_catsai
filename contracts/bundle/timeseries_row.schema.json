@@ -1,0 +1,70 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "date": {
+      "format": "date",
+      "title": "Date",
+      "type": "string"
+    },
+    "res_m": {
+      "exclusiveMinimum": 0,
+      "title": "Res M",
+      "type": "integer"
+    },
+    "source": {
+      "minLength": 1,
+      "title": "Source",
+      "type": "string"
+    },
+    "std": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Std"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "valid_frac": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Valid Frac",
+      "type": "number"
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Value"
+    },
+    "variable": {
+      "title": "Variable",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "date",
+    "variable",
+    "value",
+    "valid_frac",
+    "source",
+    "res_m"
+  ],
+  "title": "TimeseriesRow",
+  "type": "object"
+}
